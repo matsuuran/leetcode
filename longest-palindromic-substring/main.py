@@ -10,8 +10,16 @@ def longestPalindrome(s):
 	longest = ""
 
 	for index,letter in enumerate(s):
-		nextString = s[index:s[index+1:].index(letter)+index+1]
-		if(isPalindrome(nextString)):
-			if(len(longest < nextString)):
-				longest = nextString
+		if letter in s[index+1:]:
+			ends = [i for i, x in enumerate(s[index:]) if x == letter]
+		else:
+			continue
+
+		for end in ends: 
+			if(isPalindrome(s[index:end+index+1])):
+				if(len(longest) < len(s[index:end+index+1])):
+					longest = s[index:end+index+1]
+			else:
+				break
+
 	return longest
