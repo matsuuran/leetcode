@@ -8,14 +8,14 @@ def lengthOfLongestSubstring(s):
     if(len(s) < 2):
     	return len(s)
 
-    substring = ""
+    sub = ""
     maxlength = 0
 
-    for c in s:
-    	if c not in s:
-    		substring += c
+    for char in s:
+    	if char not in sub:
+    		sub += char
     	else:
-    		maxlength = max(len(substring), maxlength)
-    		substring = [substring.find(c)+1:] + c
+    		maxlength = max(len(sub), maxlength)
+    		sub = sub[sub.find(char)+1:] + char
 
-    return max(len(substring), maxlength)
+    return max(len(sub), maxlength)
